@@ -3,33 +3,34 @@ require 'spec_helper'
 describe "Static pages" do
   let(:title) { 'Ruby on Rails Tutorial Sample App' }
 
-  describe "Home page" do
-    before(:each) { visit '/static_pages/home' }
+  subject { page }
 
-    it { expect(page).to have_content('Sample App')}
-    it { expect(page).to have_title("#{title}") }
-    it { expect(page).not_to have_title(" | Home") }
+  describe "Home page" do
+    before { visit root_path }
+
+    it { should have_content('Sample App')}
+    it { should have_title("#{title}") }
+    it { should_not have_title(" | Home") }
   end
 
   describe "Help page" do
-    before(:each) { visit '/static_pages/help' }
+    before { visit help_path }
 
-    it { expect(page).to have_content('Help') }
-    it { expect(page).to have_title("#{title} | Help") }
+    it { should have_content('Help') }
+    it { should have_title("#{title} | Help") }
   end
 
   describe "About page" do
-    before(:each) { visit '/static_pages/about' }
+    before { visit about_path }
 
-    it { expect(page).to have_content('About Us') }
-    it { expect(page).to have_title("#{title}  | About Us") }
+    it { should have_content('About Us') }
+    it { should have_title("#{title}  | About Us") }
   end
 
   describe "Contact" do
-    before(:each) { visit '/static_pages/contact' }
+    before { visit contact_path }
 
-    it { expect(page).to have_title("#{title}  | Contact") }
-    it { expect(page).to have_content('Contact') }
+    it { should have_title("#{title}  | Contact") }
+    it { should have_content('Contact') }
   end
-
 end
